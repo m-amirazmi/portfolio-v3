@@ -7,7 +7,7 @@ export const Header = () => {
         <div className="flex items-start justify-between gap-2 py-4">
           <div className="flex flex-col gap-2">
             <Link to="/" className="text-2xl font-semibold">
-              Merazmi
+              Amir Azmi
             </Link>
             <nav className="flex gap-4">
               <NavLink to="/about" className="hover:text-teal-700">

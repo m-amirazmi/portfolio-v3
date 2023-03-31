@@ -10,7 +10,7 @@ export const Layout: React.FC<IProps> = () => {
       <main className="mx-auto h-full w-full max-w-6xl px-8">
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
