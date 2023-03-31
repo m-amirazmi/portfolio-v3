@@ -13,7 +13,7 @@ import { Layout } from "~/components/general/layout";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Amir Azmi | 👋 Welcome to my digital home",
   viewport: "width=device-width,initial-scale=1",
 });
 
