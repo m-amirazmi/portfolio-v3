@@ -1,4 +1,30 @@
 {
+  "projects_tab": [
+    {
+      "id": "react",
+      "url": "",
+      "name": "React",
+      "default": true
+    },
+    {
+      "id": "remix",
+      "url": "",
+      "name": "Remix",
+      "default": false
+    },
+    {
+      "id": "next",
+      "url": "",
+      "name": "Next",
+      "default": false
+    },
+    {
+      "id": "all",
+      "url": "/projects",
+      "name": "View All",
+      "default": false
+    }
+  ],
   "projects": [
     {
       "id": "1",

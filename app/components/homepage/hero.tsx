@@ -16,23 +16,23 @@ export const Hero = () => {
           specializes in creating applications using{" "}
           <Link
             className={`${linkTextColor} underline hover:text-teal-600`}
-            to="/projects?category=reactjs"
+            to="/projects?category=react"
           >
-            ReactJS
+            React
           </Link>
           -based technologies such as{" "}
           <Link
             className={`${linkTextColor} underline hover:text-teal-600`}
-            to="/projects?category=nextjs"
+            to="/projects?category=next"
           >
-            NextJS
+            Next
           </Link>{" "}
           and{" "}
           <Link
             className={`${linkTextColor} underline hover:text-teal-600`}
-            to="/projects?category=remixjs"
+            to="/projects?category=remix"
           >
-            RemixJS
+            Remix
           </Link>
           . Through this blog, I'll be sharing my thoughts, opinions, and
           projects.

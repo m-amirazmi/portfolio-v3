@@ -2,6 +2,12 @@ export type IProps = {
   children?: React.ReactNode
 }
 
+export type IProjectsTab = {
+  id: string;
+  name: string;
+  default: boolean;
+  url: string
+}
 
 export type IProject = {
   id: string;
