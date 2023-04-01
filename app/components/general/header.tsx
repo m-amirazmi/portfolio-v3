@@ -13,7 +13,7 @@ export const Header: React.FC = () => {
 
   return (
     <section className="h-full w-full">
-      <div className="mx-auto max-w-6xl px-8">
+      <div className="mx-auto max-w-6xl px-4 md:px-8">
         <div className="flex items-start justify-between gap-2 py-4">
           <div className="flex w-full flex-col justify-between gap-2 md:flex-row md:items-center">
             <Link to="/" className="text-2xl font-semibold">
