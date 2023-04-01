@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from "@remix-run/react";
-import {SocialIcons} from '~/components/homepage/social-icons'
+import { SocialIcons } from "~/components/homepage/social-icons";
 
 export const Hero = () => {
   const { mode } = useLoaderData();
@@ -37,7 +37,7 @@ export const Hero = () => {
           . Through this blog, I'll be sharing my thoughts, opinions, and
           projects.
         </p>
-       <SocialIcons />
+        <SocialIcons />
       </div>
     </section>
   );

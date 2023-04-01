@@ -1,26 +1,26 @@
 export type IProps = {
-  children?: React.ReactNode
-}
+  children?: React.ReactNode;
+};
 
 export type IProjectsTab = {
   id: string;
   name: string;
   default: boolean;
-  url: string
-}
+  url: string;
+};
 
 export type IProject = {
   id: string;
   title: string;
   category: string;
   timestamp: string;
-}
+};
 
 export type IPropsLayout = {
   mode: string;
-  toggleMode: React.Dispatch<React.SetStateAction<string>>
-}
+  toggleMode: React.Dispatch<React.SetStateAction<string>>;
+};
 
 export type IPropsProjects = {
-  items: IProject[]
-}
+  items: IProject[];
+};

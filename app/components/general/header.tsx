@@ -45,10 +45,8 @@ export const Header: React.FC = () => {
                   value={pathname + search}
                 />
                 <button
-                  className={`ml-auto cursor-pointer rounded-md   text-opacity-60 transition-colors duration-100 ease-linear hover:text-opacity-100 md:ml-0 text-xl ${
-                    mode === "dark"
-                      ? "text-yellow-300"
-                      : "text-zinc-900"
+                  className={`ml-auto cursor-pointer rounded-md   text-xl text-opacity-60 transition-colors duration-100 ease-linear hover:text-opacity-100 md:ml-0 ${
+                    mode === "dark" ? "text-yellow-300" : "text-zinc-900"
                   }`}
                 >
                   {mode === "dark" ? <FaSun /> : <FaMoon />}
