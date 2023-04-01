@@ -4,10 +4,8 @@ import {
   NavLink,
   useLoaderData,
   useLocation,
-  useNavigate,
 } from "@remix-run/react";
 import { FaMoon, FaSun } from "react-icons/fa";
-import type { IPropsLayout } from "~/utils/types";
 
 export const Header: React.FC = () => {
   const { navigationData, mode } = useLoaderData();
@@ -41,6 +39,11 @@ export const Header: React.FC = () => {
               </nav>
               <Form action="/" method="post">
                 <input type="hidden" name="mode" value="mode" />
+                <input
+                  type="hidden"
+                  name="toRedirect"
+                  value={pathname + search}
+                />
                 <button
                   className={`ml-auto cursor-pointer rounded-md border border-opacity-20  p-2 text-opacity-80 transition-colors duration-100 ease-linear hover:border-opacity-50 hover:text-opacity-100 md:ml-0 ${
                     mode === "dark"

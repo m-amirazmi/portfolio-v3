@@ -1,5 +1,4 @@
 import type { LoaderFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
 import { Hero } from "~/components/homepage/hero";
 import { Projects } from "~/components/homepage/projects";
 

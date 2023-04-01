@@ -4,3 +4,30 @@
 body {
   font-family: "Inter", sans-serif;
 }
+
+nav a {
+  position: relative;
+}
+
+.dark nav a.active {
+  color: #2dd4bf;
+}
+
+nav a.active {
+  color: #115e59;
+}
+
+.dark nav a.active::after {
+  background: #2dd4bf;
+}
+
+nav a.active::after {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  content: "";
+  width: 50%;
+  height: 2px;
+  background: #115e59;
+}

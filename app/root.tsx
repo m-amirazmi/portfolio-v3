@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Links,
   LiveReload,
@@ -79,8 +78,9 @@ export const action: ActionFunction = async ({ request }) => {
 
   if (request.method === "POST") {
     if (body.get("mode")) {
+      const toRedirect = body.get("toRedirect") as string;
       const res = await setDarkMode(request);
-      return json({ mode: res.mode }, { headers: res.headers });
+      return redirect(toRedirect, { headers: res.headers });
     }
   }
 
