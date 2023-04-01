@@ -1,8 +1,18 @@
-import { Link, NavLink } from "@remix-run/react";
+import {
+  Form,
+  Link,
+  NavLink,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "@remix-run/react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import type { IPropsLayout } from "~/utils/types";
 
-export const Header: React.FC<IPropsLayout> = ({ mode, toggleMode }) => {
+export const Header: React.FC = () => {
+  const { navigationData, mode } = useLoaderData();
+  const { search, pathname } = useLocation();
+
   return (
     <section className="h-full w-full">
       <div className="mx-auto max-w-6xl px-8">
@@ -13,29 +23,34 @@ export const Header: React.FC<IPropsLayout> = ({ mode, toggleMode }) => {
             </Link>
             <div className="flex items-center gap-6">
               <nav className="flex gap-4">
-                <NavLink to="/about" className="hover:text-teal-700">
-                  About
-                </NavLink>
-                <NavLink to="/projects" className="hover:text-teal-700">
-                  Projects
-                </NavLink>
-                <NavLink to="/blog" className="hover:text-teal-700">
-                  Blog
-                </NavLink>
-                <NavLink to="/contact" className="hover:text-teal-700">
-                  Connect
-                </NavLink>
+                {navigationData.map((i: any) => {
+                  return (
+                    <NavLink
+                      to={i.url}
+                      key={i.id}
+                      className={
+                        mode === "dark"
+                          ? "hover:text-teal-400"
+                          : "hover:text-teal-800"
+                      }
+                    >
+                      {i.name}
+                    </NavLink>
+                  );
+                })}
               </nav>
-              <div
-                onClick={() => toggleMode(mode === "dark" ? "" : "dark")}
-                className={`ml-auto md:ml-0 cursor-pointer rounded-md border  border-opacity-20 p-2 text-opacity-80 transition-colors duration-100 ease-linear hover:border-opacity-50 hover:text-opacity-100 ${
-                  mode === "dark"
-                    ? "border-zinc-100 bg-zinc-800 text-yellow-300"
-                    : "border-zinc-500 bg-zinc-200 text-zinc-900"
-                }`}
-              >
-                {mode === "dark" ? <FaSun /> : <FaMoon />}
-              </div>
+              <Form action="/" method="post">
+                <input type="hidden" name="mode" value="mode" />
+                <button
+                  className={`ml-auto cursor-pointer rounded-md border border-opacity-20  p-2 text-opacity-80 transition-colors duration-100 ease-linear hover:border-opacity-50 hover:text-opacity-100 md:ml-0 ${
+                    mode === "dark"
+                      ? "border-zinc-100 bg-zinc-800 text-yellow-300"
+                      : "border-zinc-500 bg-zinc-200 text-zinc-900"
+                  }`}
+                >
+                  {mode === "dark" ? <FaSun /> : <FaMoon />}
+                </button>
+              </Form>
             </div>
           </div>
         </div>

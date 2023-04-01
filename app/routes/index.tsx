@@ -3,47 +3,22 @@ import { useLoaderData } from "@remix-run/react";
 import { Hero } from "~/components/homepage/hero";
 import { Projects } from "~/components/homepage/projects";
 
-export default function HomePage() {
-  const { projects } = useLoaderData<typeof loader>();
+import homepageJson from "~/data/homepage.json";
 
+export default function HomePage() {
   return (
     <>
       <Hero />
-      <Projects items={projects} />
+      <Projects />
     </>
   );
 }
 
-export const loader: LoaderFunction = () => {
-  const homepageData = {
-    projects: [
-      {
-        id: "1",
-        title: "Lorem Ipsum Title",
-        category: "React",
-      },
-      {
-        id: "2",
-        title: "Lorem Ipsum Title",
-        category: "React",
-      },
-      {
-        id: "3",
-        title: "Lorem Ipsum Title",
-        category: "React",
-      },
-      {
-        id: "4",
-        title: "Lorem Ipsum Title",
-        category: "React",
-      },
-      {
-        id: "5",
-        title: "Lorem Ipsum Title",
-        category: "React",
-      },
-    ],
-  };
+export const loader: LoaderFunction = ({ request }) => {
+  const url = new URL(request.url);
+  const p = url.searchParams.get("p") || "react";
 
-  return homepageData;
+  const projects = homepageJson.projects.filter((i) => i.category === p);
+
+  return { homepageData: { ...homepageJson, projects } };
 };

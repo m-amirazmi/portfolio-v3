@@ -1,7 +1,10 @@
-import { Link } from "@remix-run/react";
-import type { IPropsProjects } from "~/utils/types";
+import { Link, useLoaderData } from "@remix-run/react";
+import type { IProject } from "~/utils/types";
 
-export const Projects: React.FC<IPropsProjects> = ({ items }) => {
+export const Projects = () => {
+  const { homepageData } = useLoaderData();
+  const items: IProject[] = homepageData.projects;
+
   return (
     <section className="pb-20">
       <div className="flex flex-col items-start justify-start md:flex-row md:items-center md:justify-between">
@@ -33,7 +36,7 @@ export const Projects: React.FC<IPropsProjects> = ({ items }) => {
           </Link>
         </ul>
       </div>
-      <div className="flex flex-row flex-nowrap gap-4 overflow-x-auto py-4">
+      <div className="flex flex-row flex-nowrap gap-4 overflow-x-auto py-4 scrollbar-hide">
         {items.map((i) => {
           return (
             <Link

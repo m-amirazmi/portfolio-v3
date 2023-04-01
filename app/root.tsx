@@ -1,4 +1,4 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import { useState } from "react";
 import {
   Links,
   LiveReload,
@@ -6,11 +6,21 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 import tailwindStyles from "~/styles/tailwind.css";
 import styles from "~/styles/main.css";
 import { Layout } from "~/components/general/layout";
-import { useState } from "react";
+import navigationJson from "~/data/navigation.json";
+import { redirect, json } from "@remix-run/node";
+import type {
+  LinksFunction,
+  MetaFunction,
+  LoaderFunction,
+  ActionFunction,
+} from "@remix-run/node";
+import { setDarkMode } from "~/utils/mode.server";
+import { getDarkMode } from "~/utils/mode.server";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -32,7 +42,7 @@ export const links: LinksFunction = () => {
 };
 
 export default function App() {
-  const [mode, setMode] = useState("dark");
+  const { mode } = useLoaderData();
 
   return (
     <html lang="en" className={mode}>
@@ -41,7 +51,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Layout toggleMode={setMode} mode={mode}>
+        <Layout>
           <Outlet />
         </Layout>
         <ScrollRestoration />
@@ -51,3 +61,28 @@ export default function App() {
     </html>
   );
 }
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const darkMode = await getDarkMode(request);
+
+  const res = !darkMode
+    ? await setDarkMode(request)
+    : { mode: darkMode, headers: {} };
+  return json(
+    { mode: res.mode, navigationData: navigationJson },
+    { headers: res.headers }
+  );
+};
+
+export const action: ActionFunction = async ({ request }) => {
+  const body = await request.formData();
+
+  if (request.method === "POST") {
+    if (body.get("mode")) {
+      const res = await setDarkMode(request);
+      return json({ mode: res.mode }, { headers: res.headers });
+    }
+  }
+
+  return redirect("/");
+};

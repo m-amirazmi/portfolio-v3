@@ -7,6 +7,7 @@ export type IProject = {
   id: string;
   title: string;
   category: string;
+  timestamp: string;
 }
 
 export type IPropsLayout = {
