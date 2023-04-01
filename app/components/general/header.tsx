@@ -19,7 +19,7 @@ export const Header: React.FC = () => {
             <Link to="/" className="text-2xl font-semibold">
               Amir Azmi
             </Link>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4">
               <nav className="flex gap-4">
                 {navigationData.map((i: any) => {
                   return (
@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
                   );
                 })}
               </nav>
-              <Form action="/" method="post">
+              <Form className="flex items-center" action="/" method="post">
                 <input type="hidden" name="mode" value="mode" />
                 <input
                   type="hidden"
@@ -45,10 +45,10 @@ export const Header: React.FC = () => {
                   value={pathname + search}
                 />
                 <button
-                  className={`ml-auto cursor-pointer rounded-md border border-opacity-20  p-2 text-opacity-80 transition-colors duration-100 ease-linear hover:border-opacity-50 hover:text-opacity-100 md:ml-0 ${
+                  className={`ml-auto cursor-pointer rounded-md   text-opacity-60 transition-colors duration-100 ease-linear hover:text-opacity-100 md:ml-0 text-xl ${
                     mode === "dark"
-                      ? "border-zinc-100 bg-zinc-800 text-yellow-300"
-                      : "border-zinc-500 bg-zinc-200 text-zinc-900"
+                      ? "text-yellow-300"
+                      : "text-zinc-900"
                   }`}
                 >
                   {mode === "dark" ? <FaSun /> : <FaMoon />}

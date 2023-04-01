@@ -1,12 +1,10 @@
-import { Link } from "@remix-run/react";
-import {
-  FaLinkedinIn,
-  FaGithubAlt,
-  FaWhatsapp,
-  FaEnvelope,
-} from "react-icons/fa";
+import { Link, useLoaderData } from "@remix-run/react";
+import {SocialIcons} from '~/components/homepage/social-icons'
 
 export const Hero = () => {
+  const { mode } = useLoaderData();
+  const linkTextColor = mode === "dark" ? "text-teal-400" : "text-teal-800";
+
   return (
     <section className="h-full py-20">
       <div className="flex h-full flex-col justify-center gap-4">
@@ -17,21 +15,21 @@ export const Hero = () => {
           <span className="font-semibold">front-end developer</span> who
           specializes in creating applications using{" "}
           <Link
-            className="text-teal-800 underline hover:text-teal-600"
+            className={`${linkTextColor} underline hover:text-teal-600`}
             to="/projects?category=reactjs"
           >
             ReactJS
           </Link>
           -based technologies such as{" "}
           <Link
-            className="text-teal-800 underline hover:text-teal-600"
+            className={`${linkTextColor} underline hover:text-teal-600`}
             to="/projects?category=nextjs"
           >
             NextJS
           </Link>{" "}
           and{" "}
           <Link
-            className="text-teal-800 underline hover:text-teal-600"
+            className={`${linkTextColor} underline hover:text-teal-600`}
             to="/projects?category=remixjs"
           >
             RemixJS
@@ -39,32 +37,7 @@ export const Hero = () => {
           . Through this blog, I'll be sharing my thoughts, opinions, and
           projects.
         </p>
-        <div className="mt-4 flex gap-4 text-xl">
-          <Link
-            to=""
-            className="rounded-md bg-zinc-50 p-3 hover:bg-teal-700 hover:bg-opacity-5 hover:text-teal-700"
-          >
-            <FaLinkedinIn />
-          </Link>
-          <Link
-            to=""
-            className="rounded-md bg-zinc-50 p-3 hover:bg-teal-700 hover:bg-opacity-5 hover:text-teal-700"
-          >
-            <FaGithubAlt />
-          </Link>
-          <Link
-            to=""
-            className="rounded-md bg-zinc-50 p-3 hover:bg-teal-700 hover:bg-opacity-5 hover:text-teal-700"
-          >
-            <FaWhatsapp />
-          </Link>
-          <Link
-            to=""
-            className="rounded-md bg-zinc-50 p-3 hover:bg-teal-700 hover:bg-opacity-5 hover:text-teal-700"
-          >
-            <FaEnvelope />
-          </Link>
-        </div>
+       <SocialIcons />
       </div>
     </section>
   );
